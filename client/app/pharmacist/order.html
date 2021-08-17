@@ -1,0 +1,194 @@
+<div class="container-fluid">
+    <div class="panel panel-success col-lg-7 col-md-7 col-sm-6">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    {{title}}
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <table id="ordtable" class="table table-condensed table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th *ngFor='#h of header'>
+                            {{h}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#i of orders">
+                        <td (click)="getOrdDetails(i.ORDERID)">{{i.ORDERID}}</td>
+                        <td (click)="getPrecDetails(i.PRESCID)">{{i.PRESCID}}</td>
+                        <td (click)="getPatDetails(i.PATID)">{{i.PATID}}</td>
+                        <td>{{i.TOTALAMT}}</td>
+                        <td>{{i.DELIVERYSTATUS}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="panel panel-primary col-lg-4 col-md-4 col-sm-5">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    Patient Details
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span *ngIf="!showPatDetails">
+                <b>If you click the patient id you can see the patient details here</b>
+            </span>
+            <table id="patdettable" class="table table-condensed table-bordered" cellspacing="0" width="100%" *ngIf="showPatDetails">
+                <tr>
+                    <th>Patient ID</th>
+                    <td>
+                        <strong>{{patient.USERID}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <strong>{{patient.USERNAME}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Age</th>
+                    <td>
+                        <strong>{{patient.AGE}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <strong>{{patient.SEX}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mobile</th>
+                    <td>
+                        <strong>{{patient.PHONE}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email ID</th>
+                    <td>
+                        <strong>{{patient.EMAILD}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Registered Date</th>
+                    <td>
+                        <strong>{{patient.REGISTEREDDATE}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Status</th>
+                    <td>
+                        <strong>{{patient.STATUS}}</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="panel panel-danger col-lg-7 col-md-7 col-sm-6">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    Order Details
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span *ngIf="!showOrdDetails">
+                <b>If you click the order id you can see the order details here</b>
+            </span>
+            <table id="orddettable" class="table table-condensed table-bordered" cellspacing="0" width="100%" *ngIf="showOrdDetails">
+                <thead>
+                    <tr>
+                        <th colspan="8" align="center">Details of the order id {{curOrder}}</th>
+                    </tr>
+                    <tr>
+                        <th *ngFor='#Oh of ordheader'>
+                            {{Oh}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#od of ordDetails">
+                        <td>{{od.DRUGID}}</td>
+                        <td>{{od.DOSAGE}}</td>
+                        <td>{{od.DAYS}}</td>
+                        <td>{{od.QUANTITYREQUD}}</td>
+                        <td>{{od.UNITDELIVERED}}</td>
+                        <td>{{od.PERUNIT}}</td>
+                        <td>{{od.COSTPERUNIT}}</td>
+                        <td>{{od.COST}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-warning col-lg-5 col-md-5 col-sm-6">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    Prescription Details
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span *ngIf="!showPresDetails">
+                <b>If you click the prescription id you can see the prescription details here</b>
+            </span>
+            <table id="predettable" class="table table-condensed table-bordered" cellspacing="0" width="100%" *ngIf="showPresDetails">
+                <thead>
+                    <tr>
+                        <th colspan="4" align="center">Details of the prescription id {{curPresc}}</th>
+                    </tr>
+                    <tr>
+                        <th *ngFor='#ph of preheader'>
+                            {{ph}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#pd of preDetails">
+                        <td>{{pd.DRUGID}}</td>
+                        <td>{{pd.DRUGNAME}}</td>
+                        <td>{{pd.DOSAGE}}</td>
+                        <td>{{pd.DAYS}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- 
+style="width:45%"
+
+As @bodi0 correctly said, it is not possible. You either have to extent Bootstrap's grid system (you can search and find various solutions, here is a 7-column example) or use nested rows e.g. http://bootply.com/dd50he9tGe.
+
+In the case of nested rows you might not always get the exact result but a similar one
+
+<div class="row">
+    <div class="col-lg-5">
+        <div class="row">
+            <div class="col-lg-4">1.67 (close to 1.5)</div>
+            <div class="col-lg-8">3.33 (close to 3.5)</div>
+        </div>    
+    </div>
+    <div class="col-lg-7">
+        <div class="row">
+            <div class="col-lg-6">3.5</div>
+            <div class="col-lg-6">3.5</div>
+        </div>    
+    </div>
+</div>
+-->

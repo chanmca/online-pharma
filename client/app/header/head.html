@@ -1,0 +1,27 @@
+<nav class="navbar navbar-inverse">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#myMenu" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#"><b>GAUTAM PHARMACY</b></a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse pull-right" id="myMenu">
+        <ul class="nav navbar-nav">
+            <li *ngFor="#item of menus">
+                <a [routerLink]="[item.hyperlink]">
+                    <span class="{{item.icon}}"></span>
+                    <span>{{item.text}}</span>
+                </a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div>
+    <router-outlet></router-outlet>
+</div>

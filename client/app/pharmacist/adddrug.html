@@ -1,0 +1,184 @@
+<div class="panel panel-primary" style="width:85%">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                Add Inventory (Tablets, Injections, Oral Liquids)
+            </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <form class="navbar-form navbar-left" role="search">
+            <div class="form-group">
+                <table class="table table-striped">
+                    <tr class="info">
+                        <td>
+                            <label for="DRUGNAME" class="control-label">Drug Name</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="DRUGNAME" placeholder="Drug Name" [(ngModel)]="invent.DRUGNAME" style='text-transform:uppercase'
+                                required>
+                        </td>
+                        <td>
+                            <label for="CATEGORY" class="control-label">Category</label>
+                        </td>
+                        <td>
+                            <select class="form-control" id="CATEGORY" style="width:auto;" [(ngModel)]="invent.CATEGORY">
+                                <option>TABLET</option>
+                                <option>INHALATION</option>
+                                <option>INJECTION</option>
+                                <option>ORAL LIQUID</option>
+                            </select>
+                        </td>
+                        <td>
+                            <label for="COMPANY" class="control-label">Company Name</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="COMPANY" placeholder="Company Name" [(ngModel)]="invent.COMPANY" style='text-transform:uppercase'
+                                required>
+                        </td>
+                    </tr>
+                    <tr class="success">
+                        <td>
+                            <label for="SUPPLIER" class="control-label">Supplier Name</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="SUPPLIER" placeholder="Supplier Name" [(ngModel)]="invent.SUPPLIER" style='text-transform:uppercase'
+                                required>
+                        </td>
+                        <td>
+                            <label for="STRENGTH" class="control-label">Strength</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="STRENGTH" placeholder="Strength" [(ngModel)]="invent.STRENGTH" style='text-transform:uppercase'
+                                required>
+                        </td>
+                        <td>
+                            <label for="QUANTITY" class="control-label">Quantity</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="QUANTITY" placeholder="Quantity" [(ngModel)]="invent.QUANTITY">
+                        </td>
+                    </tr>
+                    <tr class="warning">
+                        <td>
+                            <label for="PERUNIT" class="control-label">Per Unit</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="PERUNIT" placeholder="Per Unit" [(ngModel)]="invent.PERUNIT" required>
+                        </td>
+                        <td>
+                            <label for="UNIT" class="control-label">Unit</label>
+                        </td>
+                        <td>
+                            <input type="text" class="form-control" id="UNIT" placeholder="Unit" [(ngModel)]="invent.UNIT" style='text-transform:uppercase'
+                                required>
+                        </td>
+                        <td>
+                            <label for="COST" class="control-label">Cost</label>
+                        </td>
+                        <td>
+                            <input type="number" class="form-control" id="COST" placeholder="Cost" [(ngModel)]="invent.COST" required>
+                        </td>
+                    </tr>
+                    <tr class="danger">
+                        <td>
+                            <label for="DOS" class="control-label">Supply Date</label>
+                        </td>
+                        <td>
+                            <input type="date" class="form-control" id="DOS" placeholder="dd-MM-YYYY" [(ngModel)]="invent.DOS" required>
+                        </td>
+                        <td>
+                            <label for="DOE" class="control-label">Expiry Date</label>
+                        </td>
+                        <td>
+                            <input type="date" class="form-control" id="DOE" placeholder="dd-MM-YYYY" [(ngModel)]="invent.DOE" required>
+                        </td>
+                        <td>
+                            <label for="DESCRIPTION" class="control-label">Description</label>
+                        </td>
+                        <td>
+                            <input type="text-area" class="form-control" id="DESCRIPTION" placeholder="Description" [(ngModel)]="invent.DESCRIPTION"
+                                style='text-transform:uppercase' required>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    <tr aria-rowspan="3" class="active">
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>
+                            <button (click)="addDrug()" name="action" type="submit" class="btn btn-lg btn-primary">Submit</button>
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                </table>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="panel panel-warning" *ngIf="inventories">
+    <div class="panel-heading">
+        <h1 class="panel-title">
+            <strong>
+                Added Drugs
+            </strong>
+        </h1>
+    </div>
+    <div class="panel-body">
+        <table id="inventable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th *ngFor='#h of header'>
+                        {{h}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#i of inventories ">
+                    <td>{{i.DRUGID}}</td>
+                    <td>{{i.DRUGNAME}}</td>
+                    <td>{{i.CATEGORY}}</td>
+                    <td>{{i.STRENGTH}}</td>
+                    <td>{{i.QUANTITY}}</td>
+                    <td>{{i.PERUNIT}}</td>
+                    <td>{{i.UNIT}}</td>
+                    <td>{{i.COST}}</td>
+                    <td>{{i.STATUS}}</td>
+                    <td>{{i.DOE}}</td>
+                    <td>{{i.DESCRIPTION}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+
+
+
+<!--
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#drugDOS').datetimepicker();
+    });
+</script>
+
+<div class='input-group date' id='drugDOS'>
+    <input type='text' class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="model" ngbDatepicker #d="ngbDatepicker" />
+        <span class="input-group-addon" (click)="d.toggle()">
+            <span class="glyphicon glyphicon-calendar"></span>
+        </span>
+</div>
+<div class='input-group date' id='drugDOE'>
+    <input type='text' class="form-control" />
+    <span class="input-group-addon">
+        <span class="glyphicon glyphicon-calendar"></span>
+    </span>
+</div>
+-->

@@ -1,0 +1,66 @@
+<div class="panel panel-primary" style="width:55%">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                {{title}}
+            </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table id="ordtable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th *ngFor='#h of ordHeader'>
+                        {{h}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#i of orders">
+                    <td (click)="getOrdDetails(i.ORDERID)"><u>{{i.ORDERID}}</u></td>
+                    <td>{{i.PRESCID}}</td>
+                    <td>{{i.TOTALAMT}}</td>
+                    <td>{{i.DELIVERYSTATUS}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-success" style="width:65%">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                Order Details
+            </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <span *ngIf="!showOrdDetails">
+            <b>If you click the order id you can see the order details here</b>
+        </span>
+        <table id="orddettable" class="table table-condensed table-bordered" cellspacing="0" width="100%" *ngIf="showOrdDetails">
+            <thead>
+                <tr>
+                    <th colspan="8" align="center">Details of the order id {{curOrder}}</th>
+                </tr>
+                <tr>
+                    <th *ngFor='#Oh of orddetheader'>
+                        {{Oh}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#od of ordDetails">
+                    <td>{{od.DRUGID}}</td>
+                    <td>{{od.DOSAGE}}</td>
+                    <td>{{od.DAYS}}</td>
+                    <td>{{od.QUANTITYREQUD}}</td>
+                    <td>{{od.UNITDELIVERED}}</td>
+                    <td>{{od.PERUNIT}}</td>
+                    <td>{{od.COSTPERUNIT}}</td>
+                    <td>{{od.COST}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

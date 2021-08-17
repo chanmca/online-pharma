@@ -1,0 +1,27 @@
+<div class="panel panel-success" style="width:75%">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                    {{title}}
+                </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table id="pretable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+            <thead>
+                <tr>
+                    <th *ngFor='#h of header'>
+                        {{h}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#i of docscrips">
+                    <td>{{i.PRESCID}}</td>
+                    <td>{{i.PATIENTID}}</td>
+                    <td>{{i.DATE}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

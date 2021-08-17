@@ -1,0 +1,98 @@
+<div class="panel panel-danger" style="width:550px;">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                {{title}}
+            </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-bordered" style="width:450px;">
+            <tr>
+                <td>
+                    <select class="form-control" id="inv1" style="width:auto;" [(ngModel)]="dfield">
+                        <option>DRUG ID</option>
+                        <option>DRUG NAME</option>
+                        <option>CATEGORY</option>
+                    </select>
+                </td>
+                <td>
+                    <input type="text" class="form-control" [(ngModel)]="dtext" style="width:350px;" style='text-transform:uppercase'>
+                </td>
+                <td>
+                    <button class="btn btn-info" (click)="getDrug()">Search</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+</div>
+<div class="panel panel-info" *ngIf="showDrug">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                Inventory by Drug ID
+            </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-bordered" width="100%">
+            <thead>
+                <tr>
+                    <th *ngFor='#h of header'>
+                        {{h}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>{{drug.DRUGID}}</td>
+                    <td>{{drug.DRUGNAME}}</td>
+                    <td>{{drug.CATEGORY}}</td>
+                    <td>{{drug.STRENGTH}}</td>
+                    <td>{{drug.QUANTITY}}</td>
+                    <td>{{drug.PERUNIT}}</td>
+                    <td>{{drug.UNIT}}</td>
+                    <td>{{drug.COST}}</td>
+                    <td>{{drug.STATUS}}</td>
+                    <td>{{drug.DOE}}</td>
+                    <td>{{drug.DESCRIPTION}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="panel panel-info" *ngIf="showInvent">
+    <div class="panel-heading">
+        <h2 class="panel-title">
+            <strong>
+                Inventories by Category or Drug Name
+            </strong>
+        </h2>
+    </div>
+    <div class="panel-body">
+        <table class="table table-striped table-bordered" width="100%">
+            <thead>
+                <tr>
+                    <th *ngFor='#h of header'>
+                        {{h}}
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="#d of inventories ">
+                    <td>{{d.DRUGID}}</td>
+                    <td>{{d.DRUGNAME}}</td>
+                    <td>{{d.CATEGORY}}</td>
+                    <td>{{d.STRENGTH}}</td>
+                    <td>{{d.QUANTITY}}</td>
+                    <td>{{d.PERUNIT}}</td>
+                    <td>{{d.UNIT}}</td>
+                    <td>{{d.COST}}</td>
+                    <td>{{d.STATUS}}</td>
+                    <td>{{d.DOE}}</td>
+                    <td>{{d.DESCRIPTION}}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

@@ -1,0 +1,59 @@
+<div class="container">
+    <h1>{{title}}</h1>
+    <div class="panel panel-primary" style="width:70%">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    List of Doctors
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <table id="doctable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th *ngFor='#h of header'>
+                            {{h}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#d of doctors">
+                        <td>{{d.USERNAME}}</td>
+                        <td>{{d.SPECIALISATION}}</td>
+                        <td>{{d.PHONE}}</td>
+                        <td>{{d.EMAILD}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="panel panel-primary" style="width:70%">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    List of Pharmacists
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <table id="doctable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th *ngFor='#h of header'>
+                            {{h}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#p of pharms">
+                        <td>{{p.USERNAME}}</td>
+                        <td>{{p.SPECIALISATION}}</td>
+                        <td>{{p.PHONE}}</td>
+                        <td>{{p.EMAILD}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

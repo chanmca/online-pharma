@@ -1,0 +1,123 @@
+<div class="container-fluid">
+    <div class="panel panel-primary col-lg-6 col-md-6 col-sm-6">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    {{title}}
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <table id="pretable" class="table table-striped table-bordered" cellspacing="0" width="100%">
+                <thead>
+                    <tr>
+                        <th *ngFor='#h of header'>
+                            {{h}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#i of patprescrips">
+                        <td (click)="getPrecDetails(i.PRESCID)">
+                            <u>{{i.PRESCID}}</u>
+                        </td>
+                        <td (click)="getDocDetails(i.DOCTORID)">
+                            <u>{{i.DOCTORID}}</u>
+                        </td>
+                        <td>{{i.DATE}}</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="col-lg-1 col-md-1 col-sm-1"></div>
+    <div class="panel panel-info col-lg-5 col-md-5 col-sm-5">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    Patient Details
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span *ngIf="!showDocDetails">
+                <b>If you click the doctor id you can see the doctor details here</b>
+            </span>
+            <table id="docdettable" class="table table-condensed table-bordered" cellspacing="0" width="100%" *ngIf="showDocDetails">
+                <tr>
+                    <th>Patient ID</th>
+                    <td>
+                        <strong>{{doctor.USERID}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Name</th>
+                    <td>
+                        <strong>{{doctor.USERNAME}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Gender</th>
+                    <td>
+                        <strong>{{doctor.SEX}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Specialisation</th>
+                    <td>
+                        <strong>{{doctor.SPECIALISATION}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Mobile</th>
+                    <td>
+                        <strong>{{doctor.PHONE}}</strong>
+                    </td>
+                </tr>
+                <tr>
+                    <th>Email ID</th>
+                    <td>
+                        <strong>{{doctor.EMAILD}}</strong>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</div>
+<div class="container-fluid">
+    <div class="panel panel-danger" style="width:50%">
+        <div class="panel-heading">
+            <h2 class="panel-title">
+                <strong>
+                    Prescription Details
+                </strong>
+            </h2>
+        </div>
+        <div class="panel-body">
+            <span *ngIf="!showPresDetails">
+                <b>If you click the prescription id you can see the prescription details here</b>
+            </span>
+            <table id="predettable" class="table table-condensed table-bordered" cellspacing="0" width="100%" *ngIf="showPresDetails">
+                <thead>
+                    <tr>
+                        <th colspan="4" align="center">Details of the prescription id {{curPresc}}</th>
+                    </tr>
+                    <tr>
+                        <th *ngFor='#ph of preheader'>
+                            {{ph}}
+                        </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="#pd of preDetails">
+                        <td>{{pd.DRUGID}}</td>
+                        <td>{{pd.DRUGNAME}}</td>
+                        <td>{{pd.DOSAGE}}</td>
+                        <td>{{pd.DAYS}}</td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

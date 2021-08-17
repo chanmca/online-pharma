@@ -1,0 +1,16 @@
+<div class="col-lg-10 col-md-9 col-sm-8">
+
+    <div class="row">
+
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12" *ngFor="#item of itemTexts">
+            <div class="thumbnail">
+                <img [src]="item.image" alt="..." style="width:100%;height:200px;">
+                <div class="caption">
+                    <h3>{{item.text}}</h3>
+                    <p>{{item.desc}}</p>
+                    <p><button class="btn btn-primary">Know more...</button></p>
+                </div>
+            </div>
+        </div>
+
+</div>
